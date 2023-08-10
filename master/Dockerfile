@@ -18,8 +18,10 @@ RUN wget http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/ap
     && tar -zxvf apache-maven-$MAVEN_VERSION-bin.tar.gz \
     && rm apache-maven-$MAVEN_VERSION-bin.tar.gz \
     && mv apache-maven-$MAVEN_VERSION /usr/lib/mvn \
+    && cd /spark/jars \
+    && wget https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.11.1/commons-pool2-2.11.1.jar \
+    && rm commons-pool-1.5.4.jar \
     && cd ~ \
-    && wget https://github.com/vesoft-inc/nebula-exchange/releases/download/v3.5.0/nebula-exchange_spark_3.0-3.5.0.jar \
     && pip3 install pipenv 
 
 CMD ["/bin/bash", "/master.sh"]
